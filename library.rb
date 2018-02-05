@@ -7,7 +7,8 @@ class Library
   end
 
   def get_book_info(title)
-    @books.each{|x| return x if x[:title] == title}
+    book = @books.find{|x| x[:title] == title}
+    return book
   end
 
   def get_rental_details(title)
