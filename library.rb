@@ -2,30 +2,8 @@ class Library
 
   attr_reader :books
 
-  def initialize()
-    @books = [
-              {
-               title: "lord_of_the_rings",
-               rental_details: {
-                student_name: "Jeff",
-                date: "01/12/16"
-               }
-             },
-             {
-               title: "Homegoing",
-               rental_details: {
-                 student_name: "Kate",
-                 date: "03/03/18"
-               }
-             },
-             {
-               title: "Bad Feminist",
-               rental_details: {
-                 student_name: "Liz",
-                 date: "02/04/18"
-               }
-             }
-          ]
+  def initialize(books = [])
+    @books = books
   end
 
   def get_book_info(title)
@@ -33,7 +11,8 @@ class Library
   end
 
   def get_rental_details(title)
-    @books.each{|x| return x[:rental_details] if x[:title] == title}
+    book = @books.find{|x| x[:title] == title}
+    return book[:rental_details]
   end
 
   def add_book(title)
@@ -49,6 +28,7 @@ class Library
 
   def change_rental_details(title, name, return_date)
     new_details = {student_name: name, date: return_date}
-    @books.each{|x| x[:rental_details] = new_details if x[:title] == title}
+    book = @books.find{|x| x[:title] == title}
+    book[:rental_details] = new_details
   end
 end

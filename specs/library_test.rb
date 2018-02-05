@@ -8,7 +8,30 @@ require_relative'../library.rb'
 
 class TestLibraryTeam < Minitest::Test
   def setup
-    @library = Library.new()
+    books = [
+              {
+               title: "lord_of_the_rings",
+               rental_details: {
+                student_name: "Jeff",
+                date: "01/12/16"
+               }
+             },
+             {
+               title: "Homegoing",
+               rental_details: {
+                 student_name: "Kate",
+                 date: "03/03/18"
+               }
+             },
+             {
+               title: "Bad Feminist",
+               rental_details: {
+                 student_name: "Liz",
+                 date: "02/04/18"
+               }
+             }
+          ]
+    @library = Library.new(books)
     @sample_book = {
        title: "Homegoing",
        rental_details: {
